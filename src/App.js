@@ -14,7 +14,7 @@ class App extends React.Component {
           <Container>
             <Switch>
               <Route path="/" exact component={ Home }/>
-              <Route path="/detail" component={ Detail }/>
+              <Route path="/employee/:id" component={ Detail }/>
               <Route path="/create" component={ CreateEmployee }/>
               <Route component={ NotFound }/>
             </Switch>

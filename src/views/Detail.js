@@ -1,14 +1,31 @@
 import React from 'react';
-import '../App.css'
+import Axios from 'axios';
+import Card from '../component/Card-employee'
 
-class Home extends React.Component {
+class Detail extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+        employee: ''
+    }
+  }
+  componentDidMount(){
+    const { id } = this.props.match.params
+    const BaseURL = 'http://dummy.restapiexample.com/api/v1'
+    Axios.get(`${BaseURL}/employee/${id}`)
+    .then(response => {
+        this.setState({
+            employee: response.data
+        })
+    })
+  }
   render() {
     return(
       <div>
-        <p>Detail</p>
+        <Card data={this.state.employee}/>
       </div>
     )
   }
 }
 
-export default Home;
+export default Detail;
