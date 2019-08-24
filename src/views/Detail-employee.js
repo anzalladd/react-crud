@@ -2,8 +2,9 @@ import React from 'react';
 import Axios from 'axios';
 import Card from '../component/Card-employee'
 import { Spinner, Row } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 
-class Detail extends React.Component {
+class DetailEmployee extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -37,4 +38,4 @@ class Detail extends React.Component {
   }
 }
 
-export default Detail;
+export default withRouter(DetailEmployee);
