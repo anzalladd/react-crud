@@ -1,12 +1,14 @@
 import React from 'react';
 import Axios from 'axios';
 import Card from '../component/Card-employee'
+import { Spinner, Row } from 'react-bootstrap'
 
 class Detail extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        employee: ''
+        employee: '',
+        isLoading: true,
     }
   }
   componentDidMount(){
@@ -15,14 +17,21 @@ class Detail extends React.Component {
     Axios.get(`${BaseURL}/employee/${id}`)
     .then(response => {
         this.setState({
-            employee: response.data
+            employee: response.data,
+            isLoading: false
         })
     })
   }
   render() {
     return(
       <div>
-        <Card data={this.state.employee}/>
+        { this.state.isLoading ? 
+            <Row className="justify-content-center mt-5">
+                <Spinner animation="grow" />
+            </Row>
+            :
+            <Card data={this.state.employee}/>
+        }        
       </div>
     )
   }

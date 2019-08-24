@@ -8,8 +8,8 @@ class ListItem extends React.Component {
           <div>
             <ListGroup>
                 { this.props.lists.map((list, index) =>
-                    <Link to={`/employee/${list.id}`}> 
-                    <ListGroupItem key={index} variant={index % 2 === 0 ? "primary" : ""}>{list.employee_name}</ListGroupItem>
+                    <Link to={`/employee/${list.id}`} key={index}> 
+                        <ListGroupItem variant={index % 2 === 0 ? "primary" : ""}>{list.employee_name}</ListGroupItem>
                     </Link>
                     )}
                 </ListGroup>
